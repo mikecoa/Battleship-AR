@@ -7,7 +7,6 @@ public class Players : MonoBehaviour
 {
     private string _player1Name, _player2Name;
     private int _player1Color, _player2Color; //black, blue, green
-    public GameObject player1Tiles, player2Tiles;
 
     public GameObject[] p1SelectedColor, p2SelectedColor;
 

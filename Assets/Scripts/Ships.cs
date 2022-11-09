@@ -8,6 +8,12 @@ using UnityEngine;
 public class Ships : MonoBehaviour
 {
     public GameObject[] blackShips, blueShips, greenShips;
+    public GameObject ships;
+
+    void Start()
+    {
+        ships.transform.position = new Vector3(-150, ships.transform.position.y, ships.transform.position.z);
+    }
 
     public void PlaceShip(int color, int index, float posx, float posy)
     {
