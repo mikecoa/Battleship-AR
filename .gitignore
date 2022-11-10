@@ -72,3 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 .idea/.idea.Battleship-AR/.idea/workspace.xml
 .idea/.idea.Battleship-AR/.idea/indexLayout.xml
+.idea/.idea.Battleship-AR/.idea/vcs.xml
+.idea/.idea.Battleship-AR/.idea/projectSettingsUpdater.xml
