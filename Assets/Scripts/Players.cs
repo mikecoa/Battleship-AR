@@ -8,10 +8,16 @@ public class Players : MonoBehaviour
     private string _player1Name, _player2Name;
     private int _player1Color, _player2Color; //black, blue, green
 
+    public Map map;
+    public Ships ship;
     public GameObject[] p1SelectedColor, p2SelectedColor;
+
+    public GameObject mainPanel, prepPanel;
 
     void Start()
     {
+        _player1Name = "";
+        _player2Name = "";
         _player1Color = 0;
         _player2Color = 1;
     }
@@ -63,6 +69,22 @@ public class Players : MonoBehaviour
                 p1SelectedColor[j].SetActive(false);
             }
             p1SelectedColor[_player1Color].SetActive(true);
+        }
+    }
+
+    public void CheckName()
+    {
+        if (_player1Name=="" || _player2Name=="")
+        {
+            Debug.Log("test");
+        }
+        else
+        {
+            ship.RemoveShip();
+            map.Play();
+            mainPanel.SetActive(false);
+            prepPanel.SetActive(true);
+            
         }
     }
 }

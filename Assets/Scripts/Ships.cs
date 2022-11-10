@@ -12,10 +12,10 @@ public class Ships : MonoBehaviour
 
     void Start()
     {
-        ships.transform.position = new Vector3(-150, ships.transform.position.y, ships.transform.position.z);
+        
     }
 
-    public void PlaceShip(int color, int index, float posx, float posy)
+    public void PlaceShip(int color, int index, float posx, float posy, bool rotate)
     {
         float height;
         if (index < 2) height = -4;
@@ -25,14 +25,20 @@ public class Ships : MonoBehaviour
         if (color == 0)
         {
             blackShips[index].transform.position = new Vector3(posx, height, posy);
+            if (rotate) blackShips[index].transform.localEulerAngles = new Vector3(0, 90, 0);
+            else blackShips[index].transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         else if (color == 1)
         {
             blueShips[index].transform.position = new Vector3(posx, height, posy);
+            if (rotate) blueShips[index].transform.localEulerAngles = new Vector3(0, 90, 0);
+            else blueShips[index].transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         else if (color == 2)
         {
             greenShips[index].transform.position = new Vector3(posx, height, posy);
+            if (rotate) greenShips[index].transform.localEulerAngles = new Vector3(0, 90, 0);
+            else greenShips[index].transform.localEulerAngles = new Vector3(0, 0, 0);
         }
     }
 
@@ -47,5 +53,10 @@ public class Ships : MonoBehaviour
         posx = posx / tiles.Length;
         posy = posy / tiles.Length;
         return new float[] {posx, posy};
+    }
+
+    public void RemoveShip()
+    {
+        ships.transform.position = new Vector3(-150, ships.transform.position.y, ships.transform.position.z);
     }
 }

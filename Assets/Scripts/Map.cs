@@ -7,11 +7,7 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public GameObject[] p1Map, p2Map;
-
-    void Start()
-    {
-        HighlightAreaP1(new int[] {0,1,10,11});
-    }
+    
 
     public void HighlightAreaP1(int[] tiles)
     {
@@ -23,5 +19,10 @@ public class Map : MonoBehaviour
         {
             p1Map[tiles[j]].SetActive(true);
         }
+    }
+
+    public void Play()
+    {
+        HighlightAreaP1(new int[] {0,1,10,11});
     }
 }
