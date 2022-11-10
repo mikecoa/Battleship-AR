@@ -5,9 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene 1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Map.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ships.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ships.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/font/Titania SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/font/Titania SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <updated>1667982847905</updated>
       <workItem from="1667982858956" duration="8000" />
       <workItem from="1667993176151" duration="7069000" />
-      <workItem from="1668060620182" duration="7908000" />
+      <workItem from="1668060620182" duration="15906000" />
     </task>
     <servers />
   </component>

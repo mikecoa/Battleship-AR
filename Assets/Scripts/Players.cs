@@ -11,6 +11,7 @@ public class Players : MonoBehaviour
     public Map map;
     public Ships ship;
     public GameObject[] p1SelectedColor, p2SelectedColor;
+    public GameObject arcam, mainBackground;
 
     public GameObject mainPanel, prepPanel;
 
@@ -84,7 +85,17 @@ public class Players : MonoBehaviour
             map.Play();
             mainPanel.SetActive(false);
             prepPanel.SetActive(true);
-            
+            arcam.SetActive(true);
+            mainBackground.SetActive(false);
         }
+    }
+    public void HideP1Ships()
+    {
+        ship.HideColorShip(_player1Color);
+    }
+
+    public void HideP2Ships()
+    {
+        ship.HideColorShip(_player2Color);
     }
 }

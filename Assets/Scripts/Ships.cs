@@ -9,12 +9,7 @@ public class Ships : MonoBehaviour
 {
     public GameObject[] blackShips, blueShips, greenShips;
     public GameObject ships;
-
-    void Start()
-    {
-        
-    }
-
+    
     public void PlaceShip(int color, int index, float posx, float posy, bool rotate)
     {
         float height;
@@ -58,5 +53,30 @@ public class Ships : MonoBehaviour
     public void RemoveShip()
     {
         ships.transform.position = new Vector3(-150, ships.transform.position.y, ships.transform.position.z);
+    }
+
+    public void HideColorShip(int color)
+    {
+        if (color == 0)
+        {
+            foreach (GameObject ship in blackShips)
+            {
+                ship.SetActive(false);
+            }
+        }
+        else if (color == 1)
+        {
+            foreach (GameObject ship in blueShips)
+            {
+                ship.SetActive(false);
+            }
+        }
+        else if (color == 2)
+        {
+            foreach (GameObject ship in greenShips)
+            {
+                ship.SetActive(false);
+            }
+        }
     }
 }
