@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 
 public class Ships : MonoBehaviour
@@ -19,19 +17,19 @@ public class Ships : MonoBehaviour
         
         if (color == 0)
         {
-            blackShips[index].transform.position = new Vector3(posx, height, posy);
+            blackShips[index].transform.localPosition = new Vector3(posx, height, posy);
             if (rotate) blackShips[index].transform.localEulerAngles = new Vector3(0, 90, 0);
             else blackShips[index].transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         else if (color == 1)
         {
-            blueShips[index].transform.position = new Vector3(posx, height, posy);
+            blueShips[index].transform.localPosition = new Vector3(posx, height, posy);
             if (rotate) blueShips[index].transform.localEulerAngles = new Vector3(0, 90, 0);
             else blueShips[index].transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         else if (color == 2)
         {
-            greenShips[index].transform.position = new Vector3(posx, height, posy);
+            greenShips[index].transform.localPosition = new Vector3(posx, height, posy);
             if (rotate) greenShips[index].transform.localEulerAngles = new Vector3(0, 90, 0);
             else greenShips[index].transform.localEulerAngles = new Vector3(0, 0, 0);
         }
@@ -42,8 +40,8 @@ public class Ships : MonoBehaviour
         float posx = 0, posy = 0;
         foreach (GameObject tile in tiles)
         {
-            posx += (int)tile.transform.position.x;
-            posy += (int)tile.transform.position.z;
+            posx += (int)tile.transform.localPosition.x;
+            posy += (int)tile.transform.localPosition.z;
         }
         posx = posx / tiles.Length;
         posy = posy / tiles.Length;
@@ -52,7 +50,18 @@ public class Ships : MonoBehaviour
 
     public void RemoveShip()
     {
-        ships.transform.position = new Vector3(-150, ships.transform.position.y, ships.transform.position.z);
+        foreach (GameObject ship in blackShips)
+        {
+            ship.transform.localPosition = new Vector3(1000, ship.transform.localPosition.y, 1000);
+        }
+        foreach (GameObject ship in blueShips)
+        {
+            ship.transform.localPosition = new Vector3(1000, ship.transform.localPosition.y, 1000);
+        }
+        foreach (GameObject ship in greenShips)
+        {
+            ship.transform.localPosition = new Vector3(1000, ship.transform.localPosition.y, 1000);
+        }
     }
 
     public void HideColorShip(int color)

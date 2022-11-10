@@ -11,8 +11,8 @@ public class Players : MonoBehaviour
     public Map map;
     public Ships ship;
     public GameObject[] p1SelectedColor, p2SelectedColor;
-    public GameObject arcam, mainBackground;
-
+    public GameObject mainBackground;
+    public Camera arcam, cam;
     public GameObject mainPanel, prepPanel;
 
     void Start()
@@ -21,6 +21,7 @@ public class Players : MonoBehaviour
         _player2Name = "";
         _player1Color = 0;
         _player2Color = 1;
+        cam.clearFlags = CameraClearFlags.Skybox;
     }
 
     public string Player1Name
@@ -85,7 +86,7 @@ public class Players : MonoBehaviour
             map.Play();
             mainPanel.SetActive(false);
             prepPanel.SetActive(true);
-            arcam.SetActive(true);
+            arcam.enabled = true;
             mainBackground.SetActive(false);
         }
     }
