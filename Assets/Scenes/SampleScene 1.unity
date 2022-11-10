@@ -3233,6 +3233,7 @@ MonoBehaviour:
   - {fileID: 0}
   mainBackground: {fileID: 0}
   arcam: {fileID: 0}
+  cam: {fileID: 0}
   mainPanel: {fileID: 0}
   prepPanel: {fileID: 0}
 --- !u!114 &123582005
@@ -22702,7 +22703,7 @@ Transform:
   - {fileID: 1351462790}
   - {fileID: 173838998}
   m_Father: {fileID: 1237734421}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &839116415
 MonoBehaviour:
@@ -22786,6 +22787,7 @@ MonoBehaviour:
   - {fileID: 199352059}
   mainBackground: {fileID: 669492171}
   arcam: {fileID: 1587910407}
+  cam: {fileID: 271003513}
   mainPanel: {fileID: 583091250}
   prepPanel: {fileID: 1771023742}
 --- !u!114 &839116417
@@ -34607,7 +34609,7 @@ GameObject:
   - component: {fileID: 1237734421}
   - component: {fileID: 1237734420}
   - component: {fileID: 1237734419}
-  - component: {fileID: 1237734418}
+  - component: {fileID: 1237734422}
   m_Layer: 0
   m_Name: ImageTarget
   m_TagString: Untagged
@@ -34615,25 +34617,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1237734418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237734417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 1e108ae5f2133934f948edded555f03e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1237734420}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Astronaut
-  mDatasetName: Vuforia/VuforiaMars_Images.xml
-  mCastedBehaviour: {fileID: 1237734420}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1237734419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34703,7 +34686,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1237734418}
+  mPreview: {fileID: 1237734422}
 --- !u!4 &1237734421
 Transform:
   m_ObjectHideFlags: 0
@@ -34720,6 +34703,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1237734422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237734417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 1e108ae5f2133934f948edded555f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1237734420}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Astronaut
+  mDatasetName: Vuforia/VuforiaMars_Images.xml
+  mCastedBehaviour: {fileID: 1237734420}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1001 &1240383728
 PrefabInstance:
   m_ObjectHideFlags: 0
