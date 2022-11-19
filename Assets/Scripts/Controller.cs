@@ -13,13 +13,14 @@ public class Controller : MonoBehaviour
     public Map map;
     public Ships ships;
     public Players players;
-    public GameObject confirmButton, finishButton;
+    public GameObject buttonGroup, finishButton;
     public GameObject largeOutline, medOutline, smallOutline;
-    public TMP_Text popUpText, popUpP1AttackText, hitText, shipInd1P1, shipInd1CPU, shipInd2P1, shipInd2CPU, endText;
+    public TMP_Text popUpText, popUpP1AttackText, hitText, shipInd1P1, shipInd1CPU, shipInd2P1, shipInd2CPU, endText, bigText, medText, smallText;
     public GameObject prepPanel, waitPrepPanel, attackPanel, waitAttackPanel, endPanel;
     public GameObject blackShips, blueShips, greenShips;
     public GameObject attackButton;
     public ParticleSystem particleSystem;
+    public AudioSource hit, miss;
 
     private int[] p1shipsLoc, p2shipsLoc;
     private int currentSizeMode;//0: large, 1: medium, 2: small
@@ -66,7 +67,7 @@ public class Controller : MonoBehaviour
                     currentCursor2x2[index] -= 10;
                 }
             }
-            if (currentCursor2x1[1] > 9)
+            if (currentCursor2x1[0] > 9)
             {
                 for (int index = 0; index < 2; index++)
                 {
@@ -194,7 +195,8 @@ public class Controller : MonoBehaviour
                 p1shipsLoc[currentCursor2x2[3]] = cur2x2;
                 ships.PlaceShip(players.Player1Color, cur2x2++, ships.GetCoord(tiles)[0],
                     ships.GetCoord(tiles)[1], false);
-                showRemain();
+                //showRemain();
+                bigText.SetText((2 - (cur2x2))+"/2");
             }
             else if(curPlayer == 1 && p2shipsLoc[currentCursor2x2[0]] == -1 && p2shipsLoc[currentCursor2x2[1]] == -1
                     && p2shipsLoc[currentCursor2x2[2]] == -1 && p2shipsLoc[currentCursor2x2[3]] == -1)
@@ -220,7 +222,8 @@ public class Controller : MonoBehaviour
                 p1shipsLoc[currentCursor2x1[1]] = cur2x1;
                 ships.PlaceShip(players.Player1Color, cur2x1++, ships.GetCoord(tiles)[0],
                     ships.GetCoord(tiles)[1], false);
-                showRemain();
+                //showRemain();
+                medText.SetText((6 - (cur2x1))+"/4");
             }
             else if (curPlayer == 1 && p2shipsLoc[currentCursor2x1[0]] == -1 && p2shipsLoc[currentCursor2x1[1]] == -1)
             {
@@ -243,7 +246,8 @@ public class Controller : MonoBehaviour
                 p1shipsLoc[currentCursor1x2[1]] = cur2x1;
                 ships.PlaceShip(players.Player1Color, cur2x1++, ships.GetCoord(tiles)[0],
                     ships.GetCoord(tiles)[1], true);
-                showRemain();
+                //showRemain();
+                medText.SetText((6 - (cur2x1))+"/4");
             }
             else if (curPlayer == 1 && p2shipsLoc[currentCursor1x2[0]] == -1 && p2shipsLoc[currentCursor1x2[1]] == -1)
             {
@@ -265,7 +269,8 @@ public class Controller : MonoBehaviour
                 p1shipsLoc[currentCursor1x1[0]] = cur1x1;
                 ships.PlaceShip(players.Player1Color, cur1x1++, ships.GetCoord(tiles)[0],
                     ships.GetCoord(tiles)[1], false);
-                showRemain();
+                //showRemain();
+                smallText.SetText((14 - (cur1x1))+"/8");
             }
             else if(curPlayer == 1 && p2shipsLoc[currentCursor1x1[0]] == -1)
             {
@@ -277,9 +282,9 @@ public class Controller : MonoBehaviour
         }
         if (cur1x1 == 14 && cur2x1 == 6 && cur2x2 == 2)
         {
-            confirmButton.SetActive(false);
+            buttonGroup.SetActive(false);
             finishButton.SetActive(true);
-            showPlacedAllBoats();
+            //showPlacedAllBoats();
         }
     }
 
@@ -290,7 +295,7 @@ public class Controller : MonoBehaviour
         else if (currentSizeMode == 1 && rotate2x1 == 0) map.HighlightAreaP1(currentCursor2x1);
         else if (currentSizeMode == 1 && rotate2x1 == 1) map.HighlightAreaP1(currentCursor1x2);
         else if (currentSizeMode == 2) map.HighlightAreaP1(currentCursor1x1);
-        showRemain();
+        //showRemain();
     }
 
     public void Rotate()
@@ -314,7 +319,7 @@ public class Controller : MonoBehaviour
         if (players.Player1Color == 0) blackShips.SetActive(false);
         else if (players.Player1Color == 1) blueShips.SetActive(false);
         else if (players.Player1Color == 2) greenShips.SetActive(false);
-        confirmButton.SetActive(true);
+        buttonGroup.SetActive(true);
         finishButton.SetActive(false);
         smallOutline.SetActive(false);
         medOutline.SetActive(false);
@@ -462,6 +467,7 @@ public class Controller : MonoBehaviour
                 }
                 ships.showShip(players.Player2Color,temp);
                 showParticle(0);
+                hit.Play();
                 if (CPUShips == 0)
                 {
                     endText.SetText("YOU WON");
@@ -471,16 +477,19 @@ public class Controller : MonoBehaviour
                 }
                 else
                 {
-                    popUpP1AttackText.SetText("You hit an enemy ship! You can move again.");
+                    popUpP1AttackText.SetText("HIT");
+                    popUpP1AttackText.fontSize = 200;
                     popUpP1AttackText.color = Color.green;
                     StartCoroutine(CountdownP1(0, 2));
                 }
             }
             else
             {
-                popUpP1AttackText.SetText("You missed! Your opponent will go next.");
+                popUpP1AttackText.SetText("MISS");
+                popUpP1AttackText.fontSize = 200;
                 popUpP1AttackText.color = Color.red;
                 attackButton.SetActive(false);
+                miss.Play();
                 StartCoroutine(CountdownP1(1, 2));
             }
         }
@@ -499,6 +508,7 @@ public class Controller : MonoBehaviour
                 }
                 ships.hideShip(players.Player1Color, temp);
                 showParticle(1);
+                hit.Play();
                 if (playerShips == 0)
                 {
                     endText.SetText("YOU LOST");
@@ -520,8 +530,10 @@ public class Controller : MonoBehaviour
                 waitAttackPanel.SetActive(false);
                 attackPanel.SetActive(true);
                 popUpP1AttackText.SetText("Your opponent missed! Your turn.");
+                popUpP1AttackText.fontSize = 140;
                 popUpP1AttackText.color = Color.green;
                 attackButton.SetActive(true);
+                miss.Play();
                 StartCoroutine(CountdownP1(2, 3));
             }
         }
