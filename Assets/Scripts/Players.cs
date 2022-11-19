@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class Players : MonoBehaviour
 {
-    private string _player1Name, _player2Name;
+    private string _player1Name;
     private int _player1Color, _player2Color; //black, blue, green
 
     public Map map;
     public Ships ship;
-    public GameObject[] p1SelectedColor, p2SelectedColor;
     public GameObject mainBackground;
     public Camera arcam, cam;
     public GameObject mainPanel, prepPanel;
@@ -18,7 +17,6 @@ public class Players : MonoBehaviour
     void Start()
     {
         _player1Name = "";
-        _player2Name = "";
         _player1Color = 0;
         _player2Color = 1;
         cam.clearFlags = CameraClearFlags.Skybox;
@@ -28,12 +26,6 @@ public class Players : MonoBehaviour
     {
         get => _player1Name;
         set => _player1Name = value;
-    }
-
-    public string Player2Name
-    {
-        get => _player2Name;
-        set => _player2Name = value;
     }
 
     public int Player1Color
@@ -54,41 +46,16 @@ public class Players : MonoBehaviour
         {
             _player2Color = (_player2Color + 1) % 3;
         }
-        for (int j = 0; j < 3; j++)
-        {
-            p2SelectedColor[j].SetActive(false);
-        }
-        p2SelectedColor[_player2Color].SetActive(true);
-    }
-    
-    public void Player2ChangeColor(int i)
-    {
-        if (_player1Color == i)
-        {
-            _player1Color = (_player1Color + 1) % 3;
-            for (int j = 0; j < 3; j++)
-            {
-                p1SelectedColor[j].SetActive(false);
-            }
-            p1SelectedColor[_player1Color].SetActive(true);
-        }
     }
 
-    public void CheckName()
+    public void Play()
     {
-        if (_player1Name=="" || _player2Name=="")
-        {
-            Debug.Log("test");
-        }
-        else
-        {
-            ship.RemoveShip();
-            map.Play();
-            mainPanel.SetActive(false);
-            prepPanel.SetActive(true);
-            arcam.enabled = true;
-            mainBackground.SetActive(false);
-        }
+        ship.RemoveShip();
+        map.Play();
+        mainPanel.SetActive(false);
+        prepPanel.SetActive(true);
+        arcam.enabled = true;
+        mainBackground.SetActive(false);
     }
     public void HideP1Ships()
     {
