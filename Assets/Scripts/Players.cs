@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Players : MonoBehaviour
@@ -54,7 +55,7 @@ public class Players : MonoBehaviour
         map.Play();
         mainPanel.SetActive(false);
         prepPanel.SetActive(true);
-        arcam.enabled = true;
+        arcam.gameObject.SetActive(true);
         mainBackground.SetActive(false);
     }
     public void HideP1Ships()

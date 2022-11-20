@@ -31,8 +31,10 @@ public class Controller : MonoBehaviour
     private int cursor, enemycursor;
     private int playerShips, CPUShips;
     private int CPUHitStreak;
+    private List<int> CPUcheck = new List<int>();
     void Start()
     {
+        
         playerShips = 14;
         CPUShips = 14;
         cursor = 0;
@@ -504,7 +506,11 @@ public class Controller : MonoBehaviour
                 temp = p1shipsLoc[enemycursor];
                 for (int i = 0; i < 100; i++)
                 {
-                    if (p1shipsLoc[i] == temp) p1shipsLoc[i] = -1;
+                    if (p1shipsLoc[i] == temp)
+                    {
+                        p1shipsLoc[i] = -1;
+                        CPUcheck.Add(i);
+                    }
                 }
                 ships.hideShip(players.Player1Color, temp);
                 showParticle(1);
@@ -527,6 +533,7 @@ public class Controller : MonoBehaviour
             else
             {
                 CPUHitStreak = 0;
+                CPUcheck.Add(enemycursor);
                 waitAttackPanel.SetActive(false);
                 attackPanel.SetActive(true);
                 popUpP1AttackText.SetText("Your opponent missed! Your turn.");
@@ -568,6 +575,10 @@ public class Controller : MonoBehaviour
         yield return new WaitForSeconds (s);
         Random rnd = new Random();
         enemycursor = rnd.Next(0, 100);
+        while (CPUcheck.Contains(enemycursor))
+        {
+            enemycursor = rnd.Next(0, 100);
+        }
         Attack(1);
     }
     
